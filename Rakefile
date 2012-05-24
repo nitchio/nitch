@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Nitch::Application.load_tasks
+NitchApp::Application.load_tasks
