@@ -1,0 +1,24 @@
+!!!
+%html{'lang' => 'en'}
+  %head
+    %title Nitch
+
+    = stylesheet_link_tag    :application
+    = javascript_include_tag :application
+    = csrf_meta_tag
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to current_nitch.title, home_path, class: 'brand'
+          %ul.nav
+            %li= link_to 'Projects'
+    .container
+      - if notice || alert
+        #flash
+          - if notice
+            .notice= notice
+          - elsif alert
+            .alert= alert
+
+      = yield
