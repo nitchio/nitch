@@ -1,7 +1,20 @@
-// Place all the styles related to the nitch controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#nitch-container-outer {
+  margin-top: 15px;
+}
 
-#nitch-home {
-  margin-top: 10%;
+.sidebar {
+  overflow: hidden;
+}
+
+#nitch-sidebar-left, #nitch-sidebar-right {
+  margin: 10px 0px;
+}
+
+#nitch-content {
+  margin: 10px 0px 0px;
+}
+
+#new-post-form {
+  margin: 15px 0px 0px;
+  padding: 8px 8px 0px;
 }

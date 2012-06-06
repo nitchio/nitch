@@ -4,6 +4,10 @@ NitchApp::Application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+
+  # !!! THIS NEEDS TO BE CHANGED IN seed.rb AS WELL !!!
+  # config.action_controller.session = {:domain => 'nitch.dev'}
+
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.
@@ -34,4 +38,6 @@ NitchApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV["REDISTOGO_URL"] = 'redis://localhost:6379' 
 end

@@ -1,0 +1,20 @@
+.container
+  .row
+    .span4.offset4
+      %h1
+        Nitch Signup
+      Not a User?
+      - if @nitch
+        = link_to 'Signup', signup_url(nitch_name: @nitch.name)
+      - else
+        = link_to 'Signup', signup_url
+      
+      = form_for @user_session, url: @nitch ? sessions_path(nitch_name: @nitch.name) : sessions_path do |f|
+        = f.label 'Username', for: :username
+        = f.text_field :username
+
+        = f.label 'Password', for: :password
+        = f.password_field :password
+
+        .form-actions
+          = f.submit 'Login', class: 'btn btn-primary'

@@ -1,6 +1,9 @@
 NitchApp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # !!! THIS NEEDS TO BE CHANGED IN seed.rb AS WELL !!!
+  # config.action_controller.session = {:domain => 'nitch.com'}
+
   # Code is not reloaded between requests
   config.cache_classes = true
 

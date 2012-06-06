@@ -1,0 +1,19 @@
+html, body {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.nitch-bar-container {
+  display: block;
+  position: relative;
+  width: 199px;
+  height: 29px;
+}
+
+.nitch-bar {
+  display: block;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}

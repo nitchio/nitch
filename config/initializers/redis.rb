@@ -1,0 +1,1 @@
+Redis.current = Redis.connect(:url => ENV["REDISTOGO_URL"], :thread_safe => true)

@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  resizeFunc = ->
+    $('#nitch-sidebar-left').height($(window).height() - 51)
+    $('#nitch-sidebar-right').height($(window).height() - 51)
+
+  # resizeFunc()
+  # $(window).resize(resizeFunc)
+
+  # $('#new_archive').submit ->
+  #   alert('yep')
+  # 
+  # $('#new-archive-submit').click ->
+  #   $('#new_archive').submit()

@@ -1,0 +1,2 @@
+module Nitch::BaseHelper
+end

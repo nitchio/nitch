@@ -2,10 +2,16 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'jquery-rails'
+
+# Haml
 gem 'haml'
+gem 'haml-rails'
 
 # PostgreSQL
 gem 'pg'
+
+# Twitter Bootstrap
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # Application settings
 gem 'ledermann-rails-settings', :require => 'rails-settings'
@@ -16,6 +22,10 @@ gem 'omniauth'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+# Redis/Resque
+gem 'redis'
+gem 'redis-objects'
 
 # Use unicorn as the app server
 # gem 'unicorn'

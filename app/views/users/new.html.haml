@@ -1,0 +1,20 @@
+.container
+  .row
+    .span4.offset4
+      %h1
+        Nitch Signup
+      = form_for :user, url: @nitch ? users_url(nitch_name: @nitch.name) : users_url do |f|
+        = f.label 'Username', for: :username
+        = f.text_field :username
+
+        = f.label 'Email', for: :email
+        = f.text_field :email
+
+        = f.label 'Password', for: :password
+        = f.password_field :password
+
+        = f.label 'Password Confirmaion', for: :password_confirmation
+        = f.password_field :password_confirmation
+
+        .form-actions
+          = f.submit 'Signup', class: 'btn btn-primary'

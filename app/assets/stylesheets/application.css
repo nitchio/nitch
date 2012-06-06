@@ -9,7 +9,18 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
 
- *= require bootstrap
+ *= require bootstrap_and_overrides
  *= require_self
  *= require_tree .
 */
+
+iframe#nitch-bar {
+  display: block;
+  position: absolute;
+  border: none;
+  background: transparent;
+  top: 0px;
+  right: 0px;
+  width: 200px;
+  height: 30px;
+}

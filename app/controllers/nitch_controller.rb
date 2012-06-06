@@ -1,17 +1,9 @@
-class NitchController < ApplicationController
-  before_filter :set_and_load_nitch
-  before_filter :verify_nitch_privacy
+class NitchController < Nitch::BaseController
+  before_filter :verify_nitch_privacy, except: :private
 
-  def home
-  end
-
-  def join
-    if current_user
-      # Attempt to join this nitch
-      # current_nitch.add_user(current_user)
-      
-    else
-      # Present signup form
-    end
+  def index
+    # unless logged_in?
+    #   redirect_to join_nitch_path
+    # end
   end
 end

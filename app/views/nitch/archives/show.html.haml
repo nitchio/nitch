@@ -1,0 +1,37 @@
+/ .row
+/   .span8
+/     = archive_breadcrumb @archive.user, @archive
+.row
+  .span2
+    %ul.thumbnails
+      %li.span2.thumbnail= image_tag('http://placehold.it/260x180')
+  .span6
+    .title
+      %h2= @archive.title
+    .body= simple_format @archive.body
+.row
+  .span8
+    .btn-group
+      = link_to('#', {class: 'btn active'}) do
+        %i.icon-time
+        Newest
+      = link_to('#', {class: 'btn'}) do
+        %i.icon-fire
+        Popular
+      = link_to('#', {class: 'btn'}) do
+        %i.icon-eye-open
+        Discussed
+    %form#new-post-form.well.form-inline
+      %label.control-label
+        New Post:
+        .input-append
+          = text_field_tag '', '', placeholder: 'Write something...'
+          = link_to '#', {class: 'btn'} do
+            %i.icon-pencil
+            Text
+          = link_to '#', {class: 'btn'} do
+            %i.icon-upload
+            Upload
+.row
+  .span8
+    

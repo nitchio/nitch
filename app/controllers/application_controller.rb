@@ -1,31 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  helper_method :current_nitch, :current_user_session, :current_user
+  rescue_from ActionController::RoutingError, with: :goto_dashboard
 
-  def nitch_not_found
-    raise ActionController::RoutingError.new('Nitch Not Found')
-  end
-
-  def nitch_inaccessible
-    raise ActionController::RoutingError.new('Nitch Inaccessible')
-  end
-
-  def page_not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
+  helper_method :current_user_session, :current_user, :logged_in?
 
   private
-  def set_and_load_nitch
-    if request.subdomain.present?
-      @current_nitch = Nitch.where(name: request.subdomain.downcase).first || nitch_not_found
-    else
-      nitch_not_found
-    end
+  def goto_dashboard
+    redirect_to "http://www.#{Settings.domain_name}/"
   end
 
-  def current_nitch
-    return @current_nitch if defined?(@current_nitch)
+  def logged_in?
+    current_user
   end
 
   def current_user_session
@@ -38,17 +24,13 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.user
   end
 
-  def verify_nitch_privacy
-    return current_nitch && current_nitch.accessible_by?(current_user)
-  end
-
   def require_user
     unless current_user
       store_location
 
       flash[:notice] = "You must be logged in to access this page"
 
-      redirect_to new_user_session_url
+      redirect_to login_url
 
       return false
     end
@@ -60,14 +42,14 @@ class ApplicationController < ActionController::Base
 
       flash[:notice] = "You must be logged out to access this page"
 
-      redirect_to account_url
+      redirect_to dashboard_url
 
       return false
     end
   end
 
   def store_location
-    session[:return_to] = request.request_uri
+    session[:return_to] = request.url
   end
 
   def redirect_back_or_default(default)

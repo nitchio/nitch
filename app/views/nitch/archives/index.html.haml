@@ -1,0 +1,10 @@
+.row
+  .span8
+    - if @user
+      / = archive_breadcrumb @user
+      .page-header
+        %h2= "#{@user.username}'s #{current_nitch.settings.archive_name.pluralize}"
+    - else
+      / = archive_breadcrumb
+      .page-header
+        %h2= "All #{current_nitch.settings.archive_name.pluralize}"
