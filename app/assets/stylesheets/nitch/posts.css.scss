@@ -1,0 +1,88 @@
+.posts  {
+  margin: 15px 0px;
+}
+
+.post {
+  margin-top: 10px;
+}
+
+.post .scoring {
+  margin-left: 10px;
+}
+
+.post .score {
+  margin: 0px;
+  width: 70px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.post .upvote a, .post .downvote a {
+  display: block;
+  width: 15px;
+  margin: 0px auto;
+}
+
+.post .title {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.post .thumb, .post .details.span7 {
+  margin-left: 0px;
+}
+
+.post .details.span6 {
+  margin-left: 20px;
+}
+
+.post .details.span7 > .row > .span6 {
+  width: 720px;
+}
+
+.post .details.span6 > .row > .span6 {
+  width: 630px;
+}
+
+.post .details .posted, .post .details .links {
+  margin-top: 3px;
+}
+
+.links .divider {
+  display: inline-block;
+  width: 1px;
+  margin: 0px 1px;
+}
+
+#post {
+  margin: 0px;
+}
+
+#post .body {
+  margin: 5px 0px;
+}
+
+#post-comments-header {
+  margin: 15px 0px;
+  border-bottom: 1px solid #DDD;
+}
+
+.comments {
+  margin-top: 3px;
+  margin-left: 25px;
+  padding-left: 10px;
+  border-left: 1px dotted #DDD;
+}
+
+.comment {
+}
+
+.comment .posted, .comment .links {
+  font-size: 12px;
+}
+
+.comment .body p {
+  font-size: 14px;
+  margin: 3px 0px 2px;
+}

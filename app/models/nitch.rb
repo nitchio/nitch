@@ -11,8 +11,6 @@ class Nitch < ActiveRecord::Base
   has_settings
 
   has_many :archives
-  has_and_belongs_to_many :invite_requests
-  has_and_belongs_to_many :users
 
   after_create :set_defaults!
 

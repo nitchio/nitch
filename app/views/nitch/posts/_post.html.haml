@@ -1,0 +1,22 @@
+.row
+  .post
+    .scoring.span1
+      %ul.unstyled
+        %li.upvote
+          = link_to '', class: 'btn btn-mini' do
+            %i.icon-arrow-up
+        %li.score.lead
+          = rand(1000)
+        %li.downvote
+          = link_to '', class: 'btn btn-mini' do
+            %i.icon-arrow-down
+
+    - if rand(100) > 50
+      .thumb.span1
+        = link_to '', class: 'thumbnail' do
+          = image_tag 'http://placehold.it/70x70'
+      .details.span6
+        = render partial: 'nitch/posts/details', locals: { post: post, body_expanded: body_expanded }
+    - else
+      .details.span7
+        = render partial: 'nitch/posts/details', locals: { post: post, body_expanded: body_expanded }

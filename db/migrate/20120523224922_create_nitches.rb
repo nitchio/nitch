@@ -9,6 +9,6 @@ class CreateNitches < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :nitches, ["name"], :name => "index_nitches_on_name", :unique => true
+    add_index :nitches, :name, :unique => true
   end
 end

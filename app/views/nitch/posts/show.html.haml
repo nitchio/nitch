@@ -1,0 +1,18 @@
+.row
+  .span8
+    = archive_breadcrumb @archive, @post
+
+.row
+  .span8
+    #post
+      = render_post @post, true
+
+.row
+  .span8
+    #post-comments-header
+      .lead
+        = rand(100)
+        Comments
+    #post-comments
+      - @post.comments.roots.each do |comment|
+        = render_comment comment

@@ -28,9 +28,9 @@
               %h1.logo
                 %span= current_nitch.title
           .row
-            .span2.sidebar
-              #nitch-sidebar-left
-                %ul.nav.nav-list.well
+            .span2
+              #nitch-sidebar-left.sidebar.well
+                %ul.nav.nav-list
                   %li{ class: class_if_path_matches('active', /\A#{nitch_path}\Z/) }
                     = link_to nitch_url do
                       %i.icon-home
@@ -42,28 +42,23 @@
                   %li
                     = link_to '' do
                       %i.icon-user
-                      Users
+                      Members
                   %li.divider
                   %li.nav-header
-                    = current_nitch.settings.archive_name.pluralize
+                    = "My #{current_nitch.settings.archive_name.pluralize}"
                   - current_user.archives.where(nitch_id: current_nitch.id).each do |archive|
-                    %li{ class: class_if_path_matches('active', /\A#{archive_path(current_user.username, archive.slug)}/) }
-                      = link_to archive.title, archive_url(current_user.username, archive.slug)
-                  %li
-                    / = link_to({}, {'data-target' => '#new-archive-form', 'data-toggle' => 'modal'}) do
-                    = link_to new_archive_url do
+                    %li{ class: class_if_path_matches('active', /\A#{archive_path(archive.key, archive.slug)}/) }
+                      = link_to archive.title, archive_url(archive.key, archive.slug)
+
+                  = link_to new_archive_url, style: 'display: block; margin-top: 5px' do
+                    %span.label
                       %i.icon-plus
-                      = "Add #{current_nitch.settings.archive_name}"
-                  %li.divider
-                  %li.nav-header
-                    Following
-                  %li.nav-header
-                    Followers
+                      Add
             .span8
               #nitch-content
                 = yield
             .span2.sidebar
-              Nitch Sidebar
+
     %footer
 
     = javascript_include_tag "application"

@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605113850) do
+ActiveRecord::Schema.define(:version => 20120606114148) do
 
   create_table "archives", :force => true do |t|
     t.string   "title"
     t.string   "slug"
-    t.string   "username"
+    t.string   "key"
     t.text     "body"
     t.integer  "user_id"
     t.integer  "nitch_id"
@@ -24,8 +24,26 @@ ActiveRecord::Schema.define(:version => 20120605113850) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "archives", ["key"], :name => "index_archives_on_key"
   add_index "archives", ["slug"], :name => "index_archives_on_slug"
-  add_index "archives", ["username"], :name => "index_archives_on_username"
+
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.string   "key"
+    t.string   "ancestry"
+    t.integer  "ancestry_depth", :default => 0
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "archive_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
+  add_index "comments", ["archive_id"], :name => "index_comments_on_archive_id"
+  add_index "comments", ["key"], :name => "index_comments_on_key"
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "invite_requests", :force => true do |t|
     t.integer  "nitch_id"
@@ -44,6 +62,27 @@ ActiveRecord::Schema.define(:version => 20120605113850) do
   end
 
   add_index "nitches", ["name"], :name => "index_nitches_on_name", :unique => true
+
+  create_table "posts", :force => true do |t|
+    t.string   "slug"
+    t.string   "key"
+    t.string   "title"
+    t.text     "body"
+    t.string   "link_url"
+    t.integer  "type"
+    t.integer  "user_id"
+    t.integer  "nitch_id"
+    t.integer  "archive_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["archive_id"], :name => "index_posts_on_archive_id"
+  add_index "posts", ["key"], :name => "index_posts_on_key"
+  add_index "posts", ["nitch_id"], :name => "index_posts_on_nitch_id"
+  add_index "posts", ["slug"], :name => "index_posts_on_slug"
+  add_index "posts", ["type"], :name => "index_posts_on_type"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

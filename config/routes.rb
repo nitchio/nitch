@@ -1,4 +1,8 @@
 NitchApp::Application.routes.draw do
+  get "comments/show"
+
+  get "posts/show"
+
   constraints(subdomain: 'www') do
     resources :sessions, controller: 'user_sessions'
     resources :users
@@ -13,9 +17,12 @@ NitchApp::Application.routes.draw do
 
   constraints(subdomain: /.*/) do
     resources :archives, name_prefix: nil, path_prefix: nil, controller: 'nitch/archives'
+    resources :posts, name_prefix: nil, path_prefix: nil, controller: 'nitch/posts'
+    resources :comments, name_prefix: nil, path_prefix: nil, controller: 'nitch/comments'
 
-    match 'a/:username/:slug' => 'nitch/archives#show', as: :archive
-    match 'a/:username' => 'nitch/archives#index', as: :user_archives
+    match 'a/:archive_key/:archive_slug/p/:post_key/:post_slug/c/:key' => 'nitch/comments#show', as: :comment
+    match 'a/:archive_key/:archive_slug/p/:key/:slug' => 'nitch/posts#show', as: :post
+    match 'a/:key/:slug' => 'nitch/archives#show', as: :archive
     match 'a' => 'nitch/archives#index', as: :all_archives
 
     match 'follow' => 'nitch#follow', as: 'follow_nitch'

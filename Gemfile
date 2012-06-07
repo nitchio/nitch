@@ -11,10 +11,10 @@ gem 'haml-rails'
 gem 'pg'
 
 # Twitter Bootstrap
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', git: 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 # Application settings
-gem 'ledermann-rails-settings', :require => 'rails-settings'
+gem 'ledermann-rails-settings', require: 'rails-settings'
 
 # Authentication
 gem 'authlogic'
@@ -23,12 +23,18 @@ gem 'omniauth'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Tree data structure
+gem 'ancestry'
+
 # Redis/Resque
 gem 'redis'
 gem 'redis-objects'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+
+# Heroku gem
+gem 'heroku'
 
 # Gems used only for assets and not required
 # in production environments by default.

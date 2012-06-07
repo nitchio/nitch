@@ -1,13 +1,13 @@
 %ul.breadcrumb
   %li
     = link_to current_nitch.settings.archive_name.pluralize, all_archives_url
-    - if user
+    - if archive
       %span.divider &raquo;
-  - if user
-    %li
-      = link_to user.username, user_archives_url(username: user.username)
-      - if archive
-        %span.divider &raquo;
   - if archive
     %li
-      = link_to archive.title, archive_url(username: user.username, slug: archive.slug)
+      = link_to archive.title, archive_url(archive.key, slug: archive.slug)
+      - if post
+        %span.divider &raquo;
+  - if post
+    %li(style="overflow: hidden;")
+      = link_to truncate(post.title, length: 50), post_url(post.archive.key, post.archive.slug, post.key, post.slug)

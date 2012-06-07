@@ -1,0 +1,16 @@
+.row
+  .span8
+    .comment
+      .posted
+        = link_to comment.user.username
+        posted
+        = time_ago_in_words comment.created_at
+        ago
+      .body
+        = simple_format comment.body
+      .links
+        = link_to '#' do
+          Reply
+      .comments
+        - comment.children.each do |child|
+          = render_comment child

@@ -1,12 +1,13 @@
-class Archive < ActiveRecord::Base
+class Post < ActiveRecord::Base
   attr_accessible :title, :body
 
-  validates_presence_of :slug, :key, :title, :body, :user_id, :nitch_id
+  validates_presence_of :slug, :key, :title, :body, :user_id, :nitch_id, :archive_id
 
   belongs_to :user
   belongs_to :nitch
+  belongs_to :archive
 
-  has_many :posts
+  has_many :comments
 
   before_validation :generate_key
   before_validation :generate_slug
@@ -16,6 +17,6 @@ class Archive < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug = title.parameterize
+    self.slug = (self.title.length > 50 ? self.title[0..49] : self.title).parameterize
   end
 end

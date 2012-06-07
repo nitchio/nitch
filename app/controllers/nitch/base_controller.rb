@@ -8,6 +8,10 @@ class Nitch::BaseController < ApplicationController
     raise ActionController::RoutingError.new('Nitch Not Found')
   end
 
+  def archive_not_found
+    raise ActionController::RoutingError.new('Archive Not Found')
+  end
+
   def nitch_inaccessible
     raise ActionController::RoutingError.new('Nitch Inaccessible')
   end

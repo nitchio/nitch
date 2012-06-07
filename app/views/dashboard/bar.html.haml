@@ -26,7 +26,7 @@
         - if logged_in? && @nitch
           = link_to follow_nitch_url(subdomain: @nitch.name), class: 'btn btn-mini' do
             %i.icon-plus
-            Follow
+            = "Join #{@nitch.title}"
 
           = link_to dashboard_url, class: 'btn btn-mini' do
             %i.icon-home
@@ -39,7 +39,7 @@
         - elsif @nitch
           = link_to login_url(nitch_name: @nitch.name), class: 'btn btn-mini' do
             %i.icon-plus
-            Follow
+            = "Join #{@nitch.title}"
           = link_to signup_url(nitch_name: @nitch.name), class: 'btn btn-mini' do
             %i.icon-user
             Signup

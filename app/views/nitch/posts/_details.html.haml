@@ -1,0 +1,27 @@
+.row
+  / if thumbnail
+  .span1
+  .span6
+    .title
+      = link_to post.title, post_url(post.archive.key, post.archive.slug, post.key, post.slug)
+    .content
+      - if body_expanded
+        .body.well
+          = simple_format post.body
+  / else
+  / .span7
+  /   .title
+  /     = post.title
+.row
+  .posted.span6
+    posted
+    = time_ago_in_words post.created_at
+    ago by
+    = link_to post.user.username
+    to
+    = link_to post.archive.title
+.row
+  .links.span6
+    = link_to pluralize(rand(100), 'Comment'), post_url(post.archive.key, post.archive.slug, post.key, post.slug)
+    %span.divider
+    = link_to 'Follow'
