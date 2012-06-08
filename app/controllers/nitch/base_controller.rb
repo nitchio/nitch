@@ -43,10 +43,11 @@ class Nitch::BaseController < ApplicationController
   end
 
   def verify_nitch_privacy
-    unless current_nitch && current_nitch.accessible_by?(current_user)
-      redirect_to private_nitch_path
-
-      return false
-    end
+    return true
+    # unless current_nitch && current_nitch.accessible_by?(current_user)
+    #   redirect_to private_nitch_path
+    # 
+    #   return false
+    # end
   end
 end
