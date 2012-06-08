@@ -5,7 +5,17 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_session, :current_user, :logged_in?
 
+  if Rails.env.production?
+    before_filter :basic_auth
+  end
+
   private
+  def basic_auth
+    authenticate_or_request_with_http_basic("Restricted") do |username, password|
+      username == 'demo' && password == 'bozeman'
+    end
+  end
+
   def goto_dashboard
     redirect_to "http://www.#{Settings.domain_name}/"
   end
