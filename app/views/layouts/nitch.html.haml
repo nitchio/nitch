@@ -44,16 +44,17 @@
                       %i.icon-user
                       Members
                   %li.divider
-                  %li.nav-header
-                    = "My #{current_nitch.settings.archive_name.pluralize}"
-                  - current_user.archives.where(nitch_id: current_nitch.id).each do |archive|
-                    %li{ class: class_if_path_matches('active', /\A#{archive_path(archive.key, archive.slug)}/) }
-                      = link_to archive.title, archive_url(archive.key, archive.slug)
+                  - if logged_in?
+                    %li.nav-header
+                      = "My #{current_nitch.settings.archive_name.pluralize}"
+                    - current_user.archives.where(nitch_id: current_nitch.id).each do |archive|
+                      %li{ class: class_if_path_matches('active', /\A#{archive_path(archive.key, archive.slug)}/) }
+                        = link_to archive.title, archive_url(archive.key, archive.slug)
 
-                  = link_to new_archive_url, style: 'display: block; margin-top: 5px' do
-                    %span.label
-                      %i.icon-plus
-                      Add
+                    = link_to new_archive_url, style: 'display: block; margin-top: 5px' do
+                      %span.label
+                        %i.icon-plus
+                        Add
             .span10
               #nitch-content
                 = yield
