@@ -1,6 +1,4 @@
 class Nitch < ActiveRecord::Base
-  include Redis::Objects
-
   attr_accessible :name, :title, :description, :privacy
 
   validates_presence_of :name, :title, :privacy
