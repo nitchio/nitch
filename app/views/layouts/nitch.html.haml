@@ -61,5 +61,6 @@
 
     %footer
 
+    = yield(:modal) if content_for?(:modal)
     = javascript_include_tag "application"
 

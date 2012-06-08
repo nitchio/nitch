@@ -9,11 +9,13 @@
       .body
         = simple_format comment.body
       .links
-        = link_to '#' do
+        = link_to "#new-comment-#{comment.id}", class: 'new-comment-link' do
           Reply
         %span.divider
         = link_to comment_url(comment.post.archive.key, comment.post.archive.slug, comment.post.key, comment.post.slug, comment.key) do
           Permalink
+      %div.new-comment.hide{ id: "new-comment-#{comment.id}" }
+        = render partial: 'nitch/comments/form', locals: { archive: @archive, post: @post, parent: comment }
       .comments
         - comment.children.each do |child|
           = render_comment child

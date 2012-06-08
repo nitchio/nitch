@@ -30,7 +30,11 @@ class Nitch::PostsController < Nitch::BaseController
 
   protected
   def load_archive
-    @archive = current_nitch.archives.where(key: params[:archive_key], slug: params[:archive_slug]).first
+    if params[:archive_id]
+      @archive = current_nitch.archives.find(params[:archive_id])
+    else
+      @archive = current_nitch.archives.where(key: params[:archive_key], slug: params[:archive_slug]).first
+    end
 
     archive_not_found unless @archive
   end

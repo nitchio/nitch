@@ -6,27 +6,34 @@
 
 .row
   .span10
-    .btn-group
-      = link_to('#', {class: 'btn active'}) do
-        %i.icon-fire
-        Hottest
-      = link_to('#', {class: 'btn'}) do
-        %i.icon-time
-        Newest
-      = link_to('#', {class: 'btn'}) do
-        %i.icon-eye-open
-        Discussed
-    / %form#new-post-form.well.form-inline
-    /   %label.control-label
-    /     New Post:
-    /     .input-append
-    /       = text_field_tag '', '', placeholder: 'Write something...'
-    /       = link_to '#', {class: 'btn'} do
-    /         %i.icon-pencil
-    /         Text
-    /       = link_to '#', {class: 'btn'} do
-    /         %i.icon-upload
-    /         Upload
+    %ul.nav.nav-tabs
+      %li.active
+        = link_to('#') do
+          Updates
+
+/ .row
+/   .span3
+/     .btn-group
+/       = link_to('#', {class: 'btn active'}) do
+/         %i.icon-fire
+/         Hottest
+/       = link_to('#', {class: 'btn'}) do
+/         %i.icon-time
+/         Newest
+/       = link_to('#', {class: 'btn'}) do
+/         %i.icon-eye-open
+/         Discussed
+
+.row
+  .span2
+    #new-post-button
+      = link_to('#new-post-form', 'class' => 'btn btn-primary', 'data-toggle' => 'modal') do
+        %i.icon-plus-sign
+        New Post
+
+- content_for :modal do
+  = render partial: 'nitch/posts/new_modal', locals: { archive: @archive }
+
 .row
   .span10
     .posts

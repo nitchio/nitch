@@ -1,0 +1,5 @@
+.new-comment-form
+  = form_for Comment.new, url: comments_url(archive_id: archive.id, post_id: post.id, parent_id: (parent.id if parent)) do |f|
+    = f.text_area :body, class: 'input-xlarge', rows: '2'
+    %p
+      = f.submit 'Comment', class: 'btn btn-primary btn-mini'

@@ -5,7 +5,7 @@
         = link_to '', class: 'btn btn-mini' do
           %i.icon-arrow-up
       %li.score.lead
-        = rand(1000)
+        = 0
       %li.downvote
         = link_to '', class: 'btn btn-mini' do
           %i.icon-arrow-down
@@ -21,8 +21,8 @@
   /     = render partial: 'nitch/posts/details', locals: { post: post, options: options }
 
 - if options[:body_expanded]
-  .row.post-content
-    .span10
+  .row
+    .post-content.span9.offset1
       .content
         .body.well
           = simple_format post.body

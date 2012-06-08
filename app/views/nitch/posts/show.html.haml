@@ -11,6 +11,7 @@
   .span10
     #post-comments-header
       = pluralize(@post.comments_count, 'Comment')
+      = render partial: 'nitch/comments/form', locals: { archive: @archive, post: @post, parent: nil }
     #post-comments
       - @post.comments.roots.each do |comment|
         = render_comment comment

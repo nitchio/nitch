@@ -15,7 +15,12 @@ class Nitch::CommentsController < Nitch::BaseController
   end
   
   def create
-    @comment = Comment.new(params[:comment])
+    @comment = if params[:parent_id]
+      parent = @post.comments.find(params[:parent_id])
+      parent.children.new(params[:comment])
+    else
+      Comment.new(params[:comment])
+    end
 
     @comment.nitch = current_nitch
     @comment.user  = current_user
@@ -31,10 +36,18 @@ class Nitch::CommentsController < Nitch::BaseController
 
   protected
   def load_post_and_archive
-    @archive = current_nitch.archives.where(key: params[:archive_key], slug: params[:archive_slug]).first
+    if params[:archive_id]
+      @archive = current_nitch.archives.find(params[:archive_id])
+    else
+      @archive = current_nitch.archives.where(key: params[:archive_key], slug: params[:archive_slug]).first
+    end
     return archive_not_found unless @archive
 
-    @post = @archive.posts.where(key: params[:post_key], slug: params[:post_slug]).first
+    if params[:post_id]
+      @post = @archive.posts.find(params[:post_id])
+    else
+      @post = @archive.posts.where(key: params[:post_key], slug: params[:post_slug]).first
+    end
     return post_not_found unless @post
   end
 end
