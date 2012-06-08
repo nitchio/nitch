@@ -1,12 +1,16 @@
 module NitchHelper
-  def join_nitch_button(nitch)
-    case nitch.privacy
-    when 'public'
-      link_to "Join #{current_nitch.title}", join_nitch_path, class: 'btn btn-primary btn-large'
-    when 'invite'
-      link_to "Request an Invite", join_nitch_path, class: 'btn btn-primary btn-large'
-    else
-      link_to "Private", '#', class: 'btn btn-info btn-large disabled'
+  def activity_feed_items
+    [current_nitch.archives, current_nitch.posts].flatten.compact.sort_by(&:created_at).reverse
+  end
+
+  def render_activity_feed_item(item)
+    case item
+    when Archive
+      render_archive item, link: true
+    when Post
+      render_post item
+    when Comment
+      # render_comment item, archive: item.archive, post: item.post, parent: item.parent
     end
   end
 end

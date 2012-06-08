@@ -11,14 +11,14 @@
           %i.icon-arrow-down
 
   / - if rand(100) > 50
-  .thumb.span1
-    = link_to '', class: 'thumbnail' do
-      = image_tag 'http://placehold.it/70x70'
-  .details.span8
-    = render partial: 'nitch/posts/details', locals: { post: post, options: options }
+  / .thumb.span1
+  /   = link_to '', class: 'thumbnail' do
+  /     = image_tag 'http://placehold.it/70x70'
+  / .details.span8
+  /   = render partial: 'nitch/posts/details', locals: { post: post, options: options }
   / - else
-  /   .details.span9
-  /     = render partial: 'nitch/posts/details', locals: { post: post, options: options }
+  .details.span9
+    = render partial: 'nitch/posts/details', locals: { post: post, options: options }
 
 - if options[:body_expanded]
   .row

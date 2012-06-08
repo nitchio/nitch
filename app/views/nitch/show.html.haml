@@ -16,5 +16,5 @@
   .span10
     .posts
       / This should actually be activities generated
-      - current_nitch.posts.each do |post|
-        = render_post post
+      - activity_feed_items.each do |item|
+        = render_activity_feed_item item
