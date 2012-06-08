@@ -1,8 +1,15 @@
 .row
   .span2
     %ul.thumbnails
-      %li.span2.thumbnail= image_tag('http://placehold.it/260x180')
+      %li.span2.thumbnail
+        - if options[:link]
+          = link_to image_tag('http://placehold.it/260x180'), archive_url(archive.key, archive.slug)
+        - else
+          = image_tag('http://placehold.it/260x180')
   .span6
     .title
-      %h2= archive.title
+      - if options[:link]
+        %h2= link_to archive.title, archive_url(archive.key, archive.slug)
+      - else
+        %h2= archive.title
     .body= simple_format archive.body

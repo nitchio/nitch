@@ -10,4 +10,9 @@
         %span.divider &raquo;
   - if post
     %li(style="overflow: hidden;")
-      = link_to truncate(post.title, length: 50), post_url(post.archive.key, post.archive.slug, post.key, post.slug)
+      = link_to truncate(post.title, length: 40), post_url(post.archive.key, post.archive.slug, post.key, post.slug)
+      - if comment
+        %span.divider &raquo;
+  - if comment
+    %li(style="overflow: hidden;")
+      = link_to truncate(comment.body, length: 40), comment_url(comment.post.archive.key, comment.post.archive.slug, comment.post.key, comment.post.slug, comment.key)

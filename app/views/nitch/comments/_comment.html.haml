@@ -11,6 +11,9 @@
       .links
         = link_to '#' do
           Reply
+        %span.divider
+        = link_to comment_url(comment.post.archive.key, comment.post.archive.slug, comment.post.key, comment.post.slug, comment.key) do
+          Permalink
       .comments
         - comment.children.each do |child|
           = render_comment child

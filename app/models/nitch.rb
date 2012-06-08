@@ -10,7 +10,10 @@ class Nitch < ActiveRecord::Base
 
   has_settings
 
+  # has_and_belongs_to_many :users
   has_many :archives
+  has_many :posts
+  has_many :comments
 
   after_create :set_defaults!
 

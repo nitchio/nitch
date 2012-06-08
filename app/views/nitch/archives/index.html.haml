@@ -1,4 +1,28 @@
 .row
+  .span10
+    = archive_breadcrumb
+
+.row
   .span8
-    .page-header
-      %h2= current_nitch.settings.archive_name.pluralize
+    .btn-group
+      = link_to('#', {class: 'btn active'}) do
+        %i.icon-fire
+        Hottest
+      = link_to('#', {class: 'btn'}) do
+        %i.icon-time
+        Newest
+      = link_to('#', {class: 'btn'}) do
+        %i.icon-eye-open
+        Discussed
+  .span2
+    .btn-group.pull-right
+      = link_to('#', {class: 'btn active'}) do
+        %i.icon-th-list
+      = link_to('#', {class: 'btn'}) do
+        %i.icon-th
+
+.row
+  .span10
+    .archives
+      - current_nitch.archives.each do |archive|
+        = render_archive archive, link: true

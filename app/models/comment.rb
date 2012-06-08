@@ -1,19 +1,20 @@
 class Comment < ActiveRecord::Base
   attr_accessible :body
 
-  validates_presence_of :key, :body, :user_id, :post_id, :archive_id
+  validates_presence_of :body, :user_id, :post_id, :archive_id, :nitch_id
 
-  belongs_to :user
-  belongs_to :post
-  belongs_to :archive
+  belongs_to :post, counter_cache: true
+  belongs_to :archive, counter_cache: true
+  belongs_to :nitch, counter_cache: true
+  belongs_to :user, counter_cache: true
 
   has_ancestry cache_depth: true
 
   scope :roots, where(ancestry_depth: 0)
 
-  before_validation :generate_key
+  after_create :generate_key
 
   def generate_key
-    self.key ||= Base62.encode(Time.now.to_i)
+    update_attribute :key, 'c' + self.id.to_s(36)
   end
 end

@@ -8,6 +8,7 @@ class CreateComments < ActiveRecord::Migration
       t.integer :user_id
       t.integer :post_id
       t.integer :archive_id
+      t.integer :nitch_id
 
       t.timestamps
     end
@@ -17,5 +18,6 @@ class CreateComments < ActiveRecord::Migration
     add_index :comments, :user_id
     add_index :comments, :post_id
     add_index :comments, :archive_id
+    add_index :comments, :nitch_id
   end
 end

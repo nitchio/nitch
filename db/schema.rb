@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120606114148) do
+ActiveRecord::Schema.define(:version => 20120608003951) do
 
   create_table "archives", :force => true do |t|
     t.string   "title"
@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(:version => 20120606114148) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "nitch_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "posts_count"
+    t.integer  "comments_count"
   end
 
   add_index "archives", ["key"], :name => "index_archives_on_key"
@@ -35,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20120606114148) do
     t.integer  "user_id"
     t.integer  "post_id"
     t.integer  "archive_id"
+    t.integer  "nitch_id"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
@@ -42,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20120606114148) do
   add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
   add_index "comments", ["archive_id"], :name => "index_comments_on_archive_id"
   add_index "comments", ["key"], :name => "index_comments_on_key"
+  add_index "comments", ["nitch_id"], :name => "index_comments_on_nitch_id"
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -57,8 +61,12 @@ ActiveRecord::Schema.define(:version => 20120606114148) do
     t.string   "name"
     t.text     "description"
     t.string   "privacy"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "users_count"
+    t.integer  "archives_count"
+    t.integer  "posts_count"
+    t.integer  "comments_count"
   end
 
   add_index "nitches", ["name"], :name => "index_nitches_on_name", :unique => true
@@ -73,8 +81,9 @@ ActiveRecord::Schema.define(:version => 20120606114148) do
     t.integer  "user_id"
     t.integer  "nitch_id"
     t.integer  "archive_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "comments_count"
   end
 
   add_index "posts", ["archive_id"], :name => "index_posts_on_archive_id"
@@ -120,6 +129,10 @@ ActiveRecord::Schema.define(:version => 20120606114148) do
     t.string   "last_login_ip"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.integer  "nitches_count"
+    t.integer  "archives_count"
+    t.integer  "posts_count"
+    t.integer  "comments_count"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

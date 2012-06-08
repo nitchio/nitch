@@ -20,13 +20,13 @@ NitchApp::Application.routes.draw do
     resources :posts, name_prefix: nil, path_prefix: nil, controller: 'nitch/posts'
     resources :comments, name_prefix: nil, path_prefix: nil, controller: 'nitch/comments'
 
-    match 'a/:archive_key/:archive_slug/p/:post_key/:post_slug/c/:key' => 'nitch/comments#show', as: :comment
-    match 'a/:archive_key/:archive_slug/p/:key/:slug' => 'nitch/posts#show', as: :post
+    match 'a/:archive_key/:archive_slug/:post_key/:post_slug/:key' => 'nitch/comments#show', as: :comment
+    match 'a/:archive_key/:archive_slug/:key/:slug' => 'nitch/posts#show', as: :post
     match 'a/:key/:slug' => 'nitch/archives#show', as: :archive
     match 'a' => 'nitch/archives#index', as: :all_archives
 
     match 'follow' => 'nitch#follow', as: 'follow_nitch'
 
-    root to: 'nitch#index', as: :nitch
+    root to: 'nitch#show', as: :nitch
   end
 end

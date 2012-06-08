@@ -16,7 +16,7 @@
         = link_to '', class: 'thumbnail' do
           = image_tag 'http://placehold.it/70x70'
       .details.span6
-        = render partial: 'nitch/posts/details', locals: { post: post, body_expanded: body_expanded }
+        = render partial: 'nitch/posts/details', locals: { post: post, options: options }
     - else
       .details.span7
-        = render partial: 'nitch/posts/details', locals: { post: post, body_expanded: body_expanded }
+        = render partial: 'nitch/posts/details', locals: { post: post, options: options }

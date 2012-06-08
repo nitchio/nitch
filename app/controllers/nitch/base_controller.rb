@@ -12,6 +12,14 @@ class Nitch::BaseController < ApplicationController
     raise ActionController::RoutingError.new('Archive Not Found')
   end
 
+  def post_not_found
+    raise ActionController::RoutingError.new('Comment Not Found')
+  end
+
+  def comment_not_found
+    raise ActionController::RoutingError.new('Comment Not Found')
+  end
+
   def nitch_inaccessible
     raise ActionController::RoutingError.new('Nitch Inaccessible')
   end

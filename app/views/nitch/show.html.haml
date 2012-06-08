@@ -1,16 +1,22 @@
 .row
-  .span8
+  .span10
     .tabbable
       %ul.nav.nav-tabs
         %li.active
+          = link_to('#', {}, {'data-toggle' => 'tab'}) do
+            %i.icon-fire
+            Hottest
+        %li
           = link_to('#', {}, {'data-toggle' => 'tab'}) do
             %i.icon-time
             Newest
         %li
           = link_to('#', {}, {'data-toggle' => 'tab'}) do
-            %i.icon-fire
-            Popular
-        %li
-          = link_to('#', {}, {'data-toggle' => 'tab'}) do
             %i.icon-eye-open
             Discussed
+
+.row
+  .span10
+    .posts
+      - current_nitch.posts.each do |post|
+        = render_post post

@@ -21,8 +21,8 @@ class Nitch::ArchivesController < Nitch::BaseController
   def create
     @archive = Archive.new(params[:archive])
 
-    @archive.user  = current_user
     @archive.nitch = current_nitch
+    @archive.user  = current_user
 
     if @archive.save
       redirect_to archive_url(key: @archive.key, slug: @archive.slug)

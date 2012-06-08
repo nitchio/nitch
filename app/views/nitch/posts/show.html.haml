@@ -5,14 +5,13 @@
 .row
   .span8
     #post
-      = render_post @post, true
+      = render_post @post, body_expanded: true
 
 .row
   .span8
     #post-comments-header
       .lead
-        = rand(100)
-        Comments
+        = pluralize(@post.comments_count, 'Comment')
     #post-comments
       - @post.comments.roots.each do |comment|
         = render_comment comment

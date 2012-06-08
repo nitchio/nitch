@@ -15,6 +15,17 @@ class Nitch::PostsController < Nitch::BaseController
   end
   
   def create
+    @post = Post.new(params[:post])
+
+    @post.nitch = current_nitch
+    @post.user  = current_user
+    @post.archive = @archive
+
+    if @post.save
+      redirect_to post_url(archive_key: @archive.key, archive_slug: @archive.slug, key: @post.key, slug: @post.slug)
+    else
+      render :new
+    end
   end
 
   protected

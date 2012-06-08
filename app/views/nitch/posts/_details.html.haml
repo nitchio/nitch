@@ -5,7 +5,7 @@
     .title
       = link_to post.title, post_url(post.archive.key, post.archive.slug, post.key, post.slug)
     .content
-      - if body_expanded
+      - if options[:body_expanded]
         .body.well
           = simple_format post.body
   / else
@@ -19,9 +19,7 @@
     ago by
     = link_to post.user.username
     to
-    = link_to post.archive.title
+    = link_to post.archive.title, archive_url(post.archive.key, post.archive.slug)
 .row
   .links.span6
-    = link_to pluralize(rand(100), 'Comment'), post_url(post.archive.key, post.archive.slug, post.key, post.slug)
-    %span.divider
-    = link_to 'Follow'
+    = link_to pluralize(post.comments_count, 'Comment'), post_url(post.archive.key, post.archive.slug, post.key, post.slug)

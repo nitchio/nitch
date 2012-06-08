@@ -27,6 +27,7 @@
 .post .title {
   font-size: 16px;
   line-height: 20px;
+  font-weight: bold;
 }
 
 .post .thumb, .post .details.span7 {
@@ -59,8 +60,18 @@
   margin: 0px;
 }
 
+#post .title a {
+  color: #000;
+}
+
 #post .body {
   margin: 5px 0px;
+  padding: 5px 10px;
+}
+
+#post .body p {
+  font-size: 14px;
+  margin: 3px 0px 2px;
 }
 
 #post-comments-header {
