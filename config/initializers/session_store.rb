@@ -10,7 +10,7 @@ domain = case Rails.env
 when 'development'
   'nitch.dev'
 when 'production'
-  'nitchio.dev'
+  'nitchio.com'
 end
 
 NitchApp::Application.config.session_store :active_record_store, key: '_nitch_session', domain: domain
