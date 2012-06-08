@@ -1,14 +1,15 @@
-.container
-  .row
-    .span12
-      %h1
-        Nitch
+#welcome
+  .container
+    .row
+      .span12
+        %h1
+          Nitch
 
-      %h2.lead
-        Welcome. Find your Nitch.
-  .row
-    - Nitch.all.each do |nitch|
-      = link_to nitch_url(subdomain: nitch.name) do
-        .nitch.span2.well
-          %h3.name=  nitch.title
-          .description= simple_format nitch.description
+        %h2.lead
+          Welcome. Find your Nitch.
+    .row
+      - Nitch.all.each do |nitch|
+        = link_to nitch_url(subdomain: nitch.name) do
+          .nitch.span2.well
+            %h3.name=  nitch.title
+            .description= simple_format nitch.description

@@ -6,7 +6,7 @@ Settings.domain_name = case Rails.env
 when 'development'
   'nitch.dev'
 when 'production'
-  'nitch.com'
+  'nitchio.com'
 end
 
 # Reserved subdomains

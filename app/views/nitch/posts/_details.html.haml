@@ -7,10 +7,6 @@
   = link_to post.user.username
   to
   = link_to post.archive.title, archive_url(post.archive.key, post.archive.slug)
-- if options[:body_expanded]
-  .content
-    .body.well
-      = simple_format post.body
 - if options[:comments_count]
   .links
     = link_to pluralize(post.comments_count, 'Comment'), post_url(post.archive.key, post.archive.slug, post.key, post.slug)

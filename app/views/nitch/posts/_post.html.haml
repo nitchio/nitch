@@ -19,3 +19,10 @@
   / - else
   /   .details.span9
   /     = render partial: 'nitch/posts/details', locals: { post: post, options: options }
+
+- if options[:body_expanded]
+  .row.post-content
+    .span10
+      .content
+        .body.well
+          = simple_format post.body
