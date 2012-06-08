@@ -1,3 +1,16 @@
 .row
-  .span8
+  .span10
     = archive_breadcrumb @archive, @post, @comment
+
+.row
+  .span10
+    #post
+      = render_post @post, body_expanded: false
+
+.row
+  .span10
+    .alert.alert-warning
+      You are viewing a single comment thread.
+      = link_to 'View All Comments', post_url(@post.archive.key, @post.archive.slug, @post.key, @post.slug)
+    #post-comments
+      = render_comment @comment

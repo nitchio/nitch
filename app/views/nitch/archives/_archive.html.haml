@@ -6,7 +6,7 @@
           = link_to image_tag('http://placehold.it/260x180'), archive_url(archive.key, archive.slug)
         - else
           = image_tag('http://placehold.it/260x180')
-  .span6
+  .span8
     .title
       - if options[:link]
         %h2= link_to archive.title, archive_url(archive.key, archive.slug)

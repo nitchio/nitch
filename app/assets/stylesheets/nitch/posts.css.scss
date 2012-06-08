@@ -26,28 +26,27 @@
 
 .post .title {
   font-size: 16px;
-  line-height: 20px;
   font-weight: bold;
+  line-height: 20px;
+  margin-top: 3px;
 }
 
-.post .thumb, .post .details.span7 {
+.post .thumb, .post .details.span9 {
   margin-left: 0px;
 }
 
-.post .details.span6 {
+.post .details.span9 {
+  width: 920px;
+}
+
+.post .details.span8 {
   margin-left: 20px;
-}
-
-.post .details.span7 > .row > .span6 {
-  width: 720px;
-}
-
-.post .details.span6 > .row > .span6 {
-  width: 630px;
+  width: 830px;
 }
 
 .post .details .posted, .post .details .links {
   margin-top: 3px;
+  font-size: 12px;
 }
 
 .links .divider {
@@ -57,7 +56,7 @@
 }
 
 #post {
-  margin: 0px;
+  margin: 0px 0px 15px;
 }
 
 #post .title a {

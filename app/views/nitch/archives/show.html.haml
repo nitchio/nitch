@@ -1,11 +1,11 @@
 .row
-  .span8
+  .span10
     = archive_breadcrumb @archive
 
 = render_archive @archive
 
 .row
-  .span8
+  .span10
     .btn-group
       = link_to('#', {class: 'btn active'}) do
         %i.icon-fire
@@ -28,7 +28,7 @@
     /         %i.icon-upload
     /         Upload
 .row
-  .span8
+  .span10
     .posts
       - @archive.posts.each do |post|
-        = render_post post
+        = render_post post, comments_count: true

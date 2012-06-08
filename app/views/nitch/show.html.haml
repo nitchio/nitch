@@ -1,19 +1,16 @@
 .row
   .span10
     .tabbable
-      %ul.nav.nav-tabs
-        %li.active
-          = link_to('#', {}, {'data-toggle' => 'tab'}) do
-            %i.icon-fire
-            Hottest
-        %li
-          = link_to('#', {}, {'data-toggle' => 'tab'}) do
-            %i.icon-time
-            Newest
-        %li
-          = link_to('#', {}, {'data-toggle' => 'tab'}) do
-            %i.icon-eye-open
-            Discussed
+      .btn-group
+        = link_to('#', {class: 'btn active'}) do
+          %i.icon-fire
+          Hottest
+        = link_to('#', {class: 'btn'}) do
+          %i.icon-time
+          Newest
+        = link_to('#', {class: 'btn'}) do
+          %i.icon-eye-open
+          Discussed
 
 .row
   .span10

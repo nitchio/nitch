@@ -1,17 +1,16 @@
 .row
-  .span8
+  .span10
     = archive_breadcrumb @archive, @post
 
 .row
-  .span8
+  .span10
     #post
-      = render_post @post, body_expanded: true
+      = render_post @post, body_expanded: true, comments_count: false
 
 .row
-  .span8
+  .span10
     #post-comments-header
-      .lead
-        = pluralize(@post.comments_count, 'Comment')
+      = pluralize(@post.comments_count, 'Comment')
     #post-comments
       - @post.comments.roots.each do |comment|
         = render_comment comment
