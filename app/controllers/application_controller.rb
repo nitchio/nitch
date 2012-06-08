@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # rescue_from ActionController::RoutingError, with: :goto_dashboard
+  rescue_from ActionController::RoutingError, with: :goto_dashboard
 
   helper_method :current_user_session, :current_user, :logged_in?
 

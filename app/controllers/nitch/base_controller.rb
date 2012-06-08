@@ -36,9 +36,9 @@ class Nitch::BaseController < ApplicationController
     if request.subdomain.present? && request.subdomain == 'www'
       goto_dashboard
     elsif request.subdomain.present?
-      @current_nitch = Nitch.where(name: request.subdomain.downcase).first || nitch_not_found
+      @current_nitch = Nitch.where(name: request.subdomain.downcase).first || goto_dashboard
     else
-      nitch_not_found
+      goto_dashboard
     end
   end
 
